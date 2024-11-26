@@ -5,7 +5,7 @@ const WeeklyGraph = () => {
   return (
     <Container>
       <WeeklyReport>
-        <h3>10월 1주차</h3>
+        <Date>10월 1주차</Date>
         <BarChart>
           {["월", "화", "수", "목", "금", "토", "일"].map((day, index) => (
             <Bar key={index}>
@@ -22,29 +22,39 @@ const WeeklyGraph = () => {
 export default WeeklyGraph;
 
 const Container = styled.div`
-  padding: 20px;
   font-family: "NanumSquareRound";
+  width: 341px;
+  height: 200px;
+  background: #fef3d6;
 `;
 
 const WeeklyReport = styled.div`
-  margin: 20px 0;
+  margin: 0;
   text-align: center;
   background-color: #fff;
-  h3 {
-    background-color: #febf1a;
-  }
+  border-radius: 10px;
 `;
 
-const Subtitle = styled.h3`
-  font-size: 1em;
-  margin-bottom: 10px;
+const Date = styled.div`
+  background-color: #febf1a;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 800;
+  font-family: "NanumSquareRound";
+  color: #fff;
+  width: 341px;
+  height: 36.373px;
+  border-radius: 10px 10px 0px 0px;
 `;
 
 const BarChart = styled.div`
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
   align-items: flex-end;
+  border-radius: 0px 0px 10px 10px;
+  font-family: "NanumSquareRound";
 `;
 
 const Bar = styled.div`
@@ -55,7 +65,7 @@ const Bar = styled.div`
 
 const BarHeight = styled.div`
   width: 24px;
-  background-color: #333;
+  background-color: #c1c2cd;
   border-radius: 5px;
 `;
 

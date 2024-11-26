@@ -15,9 +15,13 @@ export const GlobalStyle = createGlobalStyle`
   }
   html{
         font-size:10px;
-        box-sizing:border-box;
     }
-  body{
+  body{ 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-overflow-style: none;
+  overflow-x: hidden;
+  width: 100%;
   font-family: "NanumSquareRound", "HakgyoansimNadeuriTTF-B", sans-serif;
     }
 `;

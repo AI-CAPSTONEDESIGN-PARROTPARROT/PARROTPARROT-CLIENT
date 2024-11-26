@@ -59,6 +59,7 @@ const WordList = styled.div`
 
 const WordItem = styled.div`
   background-color: #ffffff;
+  padding-top: 12px;
   border-radius: 8px;
   font-size: 20px;
   display: flex;
@@ -69,6 +70,6 @@ const WordItem = styled.div`
   width: 72px;
   height: 53px;
   p {
-    margin: 5px;
+    margin: 6px 0px;
   }
 `;

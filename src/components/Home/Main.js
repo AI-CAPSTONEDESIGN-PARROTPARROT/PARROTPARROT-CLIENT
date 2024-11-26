@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import character from "../../assets/images/parrot.svg";
 import book from "../../assets/images/book-open.svg";
@@ -8,35 +8,84 @@ import { Link, useLocation } from "react-router-dom";
 
 const Main = () => {
   const location = useLocation();
+  const [isRecording, setIsRecording] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audioUrl, setAudioUrl] = useState(null);
+  const mediaRecorderRef = useRef(null);
+  const audioChunksRef = useRef([]);
+
+  const handleParrotClick = async () => {
+    if (isRecording || isPlaying) return;
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mediaRecorder = new MediaRecorder(stream);
+      mediaRecorderRef.current = mediaRecorder;
+      audioChunksRef.current = [];
+
+      mediaRecorder.ondataavailable = (event) => {
+        audioChunksRef.current.push(event.data);
+      };
+
+      mediaRecorder.onstop = () => {
+        const audioBlob = new Blob(audioChunksRef.current, {
+          type: "audio/wav",
+        });
+        const audioUrl = URL.createObjectURL(audioBlob);
+        setAudioUrl(audioUrl);
+
+        // 오디오 자동 재생
+        const audio = new Audio(audioUrl);
+        audio.onplay = () => {
+          setIsPlaying(true); // 재생 상태 설정
+        };
+        audio.onended = () => {
+          setIsPlaying(false); // 재생 상태 해제
+        };
+        audio.play();
+      };
+
+      mediaRecorder.start();
+      setIsRecording(true);
+
+      // 7초 후 녹음 종료
+      setTimeout(() => {
+        mediaRecorder.stop();
+        setIsRecording(false);
+      }, 7000);
+    } catch (error) {
+      console.error("Error accessing microphone:", error);
+    }
+  };
 
   return (
     <Container>
       <TopSection>
         <StatusWrapper>
-          {" "}
           <Hanger src={hanger} />
           <LearningStatus>
             <StatusText>
               <Num>10</Num> 개 학습 중
             </StatusText>
           </LearningStatus>
-          <ParrotImage>
+          <ParrotImage onClick={handleParrotClick}>
             <img src={character} alt="Parrot" />
           </ParrotImage>
         </StatusWrapper>
         <TalkingTextWrapper>
           <NameLabel>패럿이</NameLabel>
           <TalkingText>
-            안녕! 그동안 잘 지냈어?
-            <br /> 나를 누르고 나에게 말을 걸어줘 !!
+            {isRecording
+              ? "김민지님의 말 듣는중.."
+              : isPlaying
+              ? "패럿이가 말하는 중.."
+              : "안녕! 나를 누르고 나에게 말을 걸어줘 !!"}
           </TalkingText>
         </TalkingTextWrapper>
         <ButtonContainer>
           <ActionButton>
-            {" "}
             오늘의 영상
             <ActionIcon>
-              {" "}
               <img src={film} alt="film Icon" />
             </ActionIcon>
           </ActionButton>
@@ -53,8 +102,6 @@ const Main = () => {
 };
 
 export default Main;
-
-// Styled Components
 
 const Container = styled.div`
   display: flex;

@@ -32,7 +32,7 @@ const Container = styled.div`
   background-color: #ffffff;
   font-family: "HakgyoansimNadeuriTTF-B";
   height: 100vh;
-  padding-bottom: 180px;
+  padding-bottom: 140px;
 `;
 
 const Header = styled.header`

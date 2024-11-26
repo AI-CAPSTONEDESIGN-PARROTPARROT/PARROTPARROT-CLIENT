@@ -51,6 +51,7 @@ const WordContainer = styled.div`
   background-color: #fef3d6;
   margin: 0;
   font-family: "NanumSquareRound";
+  padding-bottom: 120px;
 `;
 
 const SearchWrapper = styled.div`

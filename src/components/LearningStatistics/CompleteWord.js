@@ -4,6 +4,7 @@ const CompleteWord = () => {
   return (
     <div>
       <WordList>
+        <Title>주간 학습 단어</Title>
         <WordItem>
           <WordText>밥</WordText>
           <ProgressContainer>
@@ -40,6 +41,14 @@ const CompleteWord = () => {
 export default CompleteWord;
 const WordList = styled.div`
   margin-top: 16px;
+  font-family: "NanumSquareRound";
+`;
+const Title = styled.div`
+  margin: 18px;
+  color: #001c2c;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 800;
 `;
 
 const WordItem = styled.div`

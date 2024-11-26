@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "../common/menu";
-import character from "../assets/images/parrot.svg";
+import character from "../assets/images/parrottop.svg";
 import styled from "styled-components";
 import WeeklyGraph from "../components/LearningStatistics/WeeklyGraph";
 import CompleteWord from "../components/LearningStatistics/CompleteWord";
@@ -49,6 +49,9 @@ const Container = styled.div`
   padding: 20px;
   background-color: #fef3d6;
   font-family: "NanumSquareRound";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Header = styled.div`
@@ -59,23 +62,25 @@ const Header = styled.div`
 `;
 
 const Title = styled.h2`
-  flex-grow: 1;
   text-align: center;
   font-size: 1.2em;
 `;
 
 const ParrotImage = styled.img`
   width: 126px;
-  height: 126px;
+  height: 80px;
 `;
 
 const StatsSummary = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
   margin: 15px 0;
   background-color: #fff;
-  padding: 10px;
+  padding: 0px 10px;
   border-radius: 10px;
+  width: 341px;
+  height: 80px;
 `;
 
 const Stat = styled.div`
@@ -83,7 +88,10 @@ const Stat = styled.div`
   color: #333;
   text-align: center;
   line-height: 1.4;
+  margin: 6px;
+
   strong {
     font-size: 17px;
+    font-weight: 800;
   }
 `;
