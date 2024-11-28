@@ -36,6 +36,7 @@ const Main = () => {
 
         // 오디오 자동 재생
         const audio = new Audio(audioUrl);
+        audio.playbackRate = 2.0;
         audio.onplay = () => {
           setIsPlaying(true); // 재생 상태 설정
         };

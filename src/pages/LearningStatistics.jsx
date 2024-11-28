@@ -16,7 +16,7 @@ const LearningStatistics = () => {
     <Container>
       <Header>
         {/* <BackButton><FaArrowLeft /></BackButton> */}
-        <Title>패럿이님의 발음 리포트</Title>
+        <Title>김민지님의 발음 리포트</Title>
       </Header>
 
       <StatsSummary>
@@ -46,7 +46,6 @@ const LearningStatistics = () => {
 export default LearningStatistics;
 
 const Container = styled.div`
-  padding: 20px;
   background-color: #fef3d6;
   font-family: "NanumSquareRound";
   display: flex;
@@ -54,16 +53,22 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const Header = styled.div`
+const Header = styled.header`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  justify-content: start;
+  width: 100%;
+  background-color: #febf1a;
 `;
 
 const Title = styled.h2`
-  text-align: center;
-  font-size: 1.2em;
+  font-size: 20px;
+  color: #ffffff;
+  font-family: NanumSquareRound;
+  font-style: normal;
+  font-weight: 800;
+  padding: 15px;
+  margin: 0;
 `;
 
 const ParrotImage = styled.img`

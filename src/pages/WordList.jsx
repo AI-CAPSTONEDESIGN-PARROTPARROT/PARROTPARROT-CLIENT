@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 //import { FaSearch } from 'react-icons/fa';
 import Menu from "../common/menu";
-import Header from "../common/Header";
 const WordList = () => {
   const words = [
     { text: "야", date: "2024.10.27", progress: 80 },
@@ -19,7 +18,7 @@ const WordList = () => {
 
   return (
     <WordContainer>
-      <Header />
+      <Header>목표 단어</Header>
       <SearchWrapper>
         <SearchBar>
           {/* <FaSearch /> */}
@@ -51,9 +50,21 @@ const WordContainer = styled.div`
   background-color: #fef3d6;
   margin: 0;
   font-family: "NanumSquareRound";
-  padding-bottom: 120px;
+  padding: 0px 0px 120px 0px;
 `;
-
+const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  padding: 15px;
+  background-color: #febf1a;
+  font-size: 20px;
+  color: #ffffff;
+  font-family: NanumSquareRound;
+  font-style: normal;
+  font-weight: 800;
+`;
 const SearchWrapper = styled.div`
   display: flex;
   flex-direction: column;
